@@ -1,0 +1,13 @@
+import hashlib
+
+
+def check_hash(data: str, expected_sha256: str) -> bool:
+    actual = hashlib.sha256(data.encode("utf-8")).hexdigest()
+    return actual == expected_sha256.lower()
+
+
+sample = "test_payload"
+digest = hashlib.sha256(sample.encode()).hexdigest()
+
+print(f"SHA-256: {digest}")
+print(f"Match:   {check_hash(sample, digest)}")
